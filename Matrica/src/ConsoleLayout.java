@@ -5,11 +5,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
-public class Console extends JPanel{
+public class ConsoleLayout extends JPanel{
 	
 	private JTextArea textArea; 
 	
-	public Console (){
+	public ConsoleLayout (){
 		textArea = new JTextArea();
 		setLayout(new BorderLayout());
 		
