@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import math.Matrice;
+import math.Solver;
+
 
 public class ChooserLayout extends JPanel implements ActionListener{
 	
@@ -49,6 +52,10 @@ public class ChooserLayout extends JPanel implements ActionListener{
 		if(klikuar == matrica2) {
 			if(chooseListener != null) {
 				chooseListener.chooseOption(0);
+				Matrice matrice = new Matrice(1, 1, 2, 1, -1, 0);
+				Solver solver = new Solver();
+				solver.generateNextMatrice(matrice, 1);
+				
 			}
 		}
 		if(klikuar == matrica3) {
