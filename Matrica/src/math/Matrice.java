@@ -16,4 +16,13 @@ public class Matrice
 	   this.a1 = a1; this.a2 = a2; this.a3 = a3; this.a4 = a4; this.b1 = b1; this.b2 = b2; this.b3 = b3;  this.b4 = b4; this.c1 = c1; this.c2 = c2; this.c3 = c3; this.c4 = c4;
 	   this.type = true;
     }
+    
+    public void printValues()
+    {
+    	if(this.type == false)
+    	{
+    	  System.out.println(this.a1+" "+this.a2+" | "+this.a3);
+    	  System.out.println(this.b1+" "+this.b2+" | "+this.b3);
+    	}
+    }
 }
