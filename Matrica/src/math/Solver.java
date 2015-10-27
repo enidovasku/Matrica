@@ -30,7 +30,7 @@ public class Solver
 		return this.delta;
 	}
 	
-	//gjeneron matricen e fazes se radhes
+	//gjeneron matricen e fazes se radhes/
 	public Matrice generateNextMatrice(Matrice inputMatrice, int phase)
 	{
 		double multiplyer;

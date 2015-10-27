@@ -2,7 +2,7 @@ package math;
 
 public class Matrice
 {
-	public boolean type; //c'lloj matrice jam? 0-2x2||1-3x3
+	public boolean type; //c'lloj matrice jam? 0-2x2||1-3x3/
 	public double a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4;
 	   
     public Matrice(double a1, double a2, double a3, double b1, double b2, double b3)
