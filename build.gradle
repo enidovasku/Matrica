@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "matrix.launch"
+
+jar {
+    baseName = "Matrix"
+    version = "0.1.0"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
