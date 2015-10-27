@@ -26,61 +26,61 @@ public class Solver {
     }
 
     //gjeneron matricen e fazes se radhes/
-    public Matrice generateNextMatrice(Matrice inputMatrice, int phase) {
+    public Matrix generateNextMatrice(Matrix inputMatrix, int phase) {
         double multiplyer;
-        if (!inputMatrice.type) {
+        if (!inputMatrix.type) {
             if (phase == 1) {
-                if ((inputMatrice.a1 == 0 && inputMatrice.b1 == 0) || (inputMatrice.a2 == 0 && inputMatrice.b2 == 0))
+                if ((inputMatrix.a1 == 0 && inputMatrix.b1 == 0) || (inputMatrix.a2 == 0 && inputMatrix.b2 == 0))
                     this.unexpectedResult = "Ky sistem ekuacionesh nuk ka zgjidhje";
 
-                if (inputMatrice.a1 == 0) this.x2 = inputMatrice.a3 / inputMatrice.a2;
+                if (inputMatrix.a1 == 0) this.x2 = inputMatrix.a3 / inputMatrix.a2;
                 else {
                     //multiply by some factor to make the key 1
-                    multiplyer = 1 / inputMatrice.a1;
-                    inputMatrice.a1 = inputMatrice.a1 * (multiplyer);
-                    inputMatrice.a2 = inputMatrice.a2 * (multiplyer);
-                    inputMatrice.a3 = inputMatrice.a3 * (multiplyer);
+                    multiplyer = 1 / inputMatrix.a1;
+                    inputMatrix.a1 = inputMatrix.a1 * (multiplyer);
+                    inputMatrix.a2 = inputMatrix.a2 * (multiplyer);
+                    inputMatrix.a3 = inputMatrix.a3 * (multiplyer);
 
                 }
-                if (inputMatrice.b1 == 0) this.x2 = inputMatrice.b3 / inputMatrice.b2;
+                if (inputMatrix.b1 == 0) this.x2 = inputMatrix.b3 / inputMatrix.b2;
                 else {
-                    multiplyer = 1 / inputMatrice.b1;
-                    inputMatrice.b1 = inputMatrice.b1 * (multiplyer);
-                    inputMatrice.b2 = inputMatrice.b2 * (multiplyer);
-                    inputMatrice.b3 = inputMatrice.b3 * (multiplyer);
+                    multiplyer = 1 / inputMatrix.b1;
+                    inputMatrix.b1 = inputMatrix.b1 * (multiplyer);
+                    inputMatrix.b2 = inputMatrix.b2 * (multiplyer);
+                    inputMatrix.b3 = inputMatrix.b3 * (multiplyer);
                     //TO BE CHANGED
 
                     System.out.println(phase + " -> ");
-                    inputMatrice.printValues();
+                    inputMatrix.printValues();
                 }
             } else if (phase == 2) {
                 //substract
-                inputMatrice.b1 = inputMatrice.b1 - inputMatrice.a1;
-                inputMatrice.b2 = inputMatrice.b2 - inputMatrice.a2;
-                inputMatrice.b3 = inputMatrice.b3 - inputMatrice.a3;
+                inputMatrix.b1 = inputMatrix.b1 - inputMatrix.a1;
+                inputMatrix.b2 = inputMatrix.b2 - inputMatrix.a2;
+                inputMatrix.b3 = inputMatrix.b3 - inputMatrix.a3;
                 //TO BE CHANGED
 
                 System.out.println(phase + " -> ");
-                inputMatrice.printValues();
+                inputMatrix.printValues();
             } else if (phase == 3) {
-                multiplyer = 1 / inputMatrice.b2;
-                inputMatrice.b2 = inputMatrice.b2 * (multiplyer);
-                inputMatrice.b3 = inputMatrice.b3 * (multiplyer);
+                multiplyer = 1 / inputMatrix.b2;
+                inputMatrix.b2 = inputMatrix.b2 * (multiplyer);
+                inputMatrix.b3 = inputMatrix.b3 * (multiplyer);
                 //TO BE CHANGED
 
                 System.out.println(phase + " -> ");
-                inputMatrice.printValues();
+                inputMatrix.printValues();
             } else if (phase == 4) {
-                multiplyer = inputMatrice.a2 / inputMatrice.b2;
-                inputMatrice.a2 = 0;
-                inputMatrice.a3 = inputMatrice.a3 - (multiplyer * inputMatrice.b3);
-                this.x1 = inputMatrice.a3;
-                this.x2 = inputMatrice.b3;
+                multiplyer = inputMatrix.a2 / inputMatrix.b2;
+                inputMatrix.a2 = 0;
+                inputMatrix.a3 = inputMatrix.a3 - (multiplyer * inputMatrix.b3);
+                this.x1 = inputMatrix.a3;
+                this.x2 = inputMatrix.b3;
                 this.stop = true;
                 //TO BE CHANGED
 
                 System.out.println(phase + " -> ");
-                inputMatrice.printValues();
+                inputMatrix.printValues();
             }
             phase++;
         } else {
@@ -89,9 +89,9 @@ public class Solver {
 
 
         if (this.stop) {
-            return inputMatrice;
+            return inputMatrix;
         } else {
-            return generateNextMatrice(inputMatrice, phase);
+            return generateNextMatrice(inputMatrix, phase);
         }
     }
 

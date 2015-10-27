@@ -1,6 +1,6 @@
 package matrix;
 
-import matrix.math.Matrice;
+import matrix.math.Matrix;
 import matrix.math.Solver;
 
 import javax.swing.*;
@@ -47,9 +47,11 @@ public class ChooserLayout extends JPanel implements ActionListener {
         if (klikuar == matrica2) {
             if (chooseListener != null) {
                 chooseListener.chooseOption(0);
-                Matrice matrice = new Matrice(1, 1, 2, 1, -1, 0);
+                //TODO: fix this
+//                Matrix matrix = new Matrix(1, 1, 2, 1, -1, 0);
+                Matrix matrix = null;
                 Solver solver = new Solver();
-                solver.generateNextMatrice(matrice, 1);
+                solver.generateNextMatrice(matrix, 1);
 
             }
         }
