@@ -23,7 +23,6 @@ public class Matrix {
      * Constructor to create a {@code Matrix} instance from a 2D array
      *
      * @param matrix The 2D array, which should be a square array
-     * @author Aldo Ziflaj
      */
     public Matrix(double[][] matrix) {
         this.matrix = matrix;
@@ -54,7 +53,6 @@ public class Matrix {
      * @param row The row of the item to get
      * @param col The column of the item to get
      * @return The item at the given position
-     * @author Aldo Ziflaj
      */
     public double getItemAtPosition(int row, int col) {
         return matrix[row][col];
@@ -70,9 +68,8 @@ public class Matrix {
      * @param row The given row for the minor matrix
      * @param col The given column for the minor matrix
      * @return The minor matrix
-     * @author Aldo Ziflaj
      */
-    public Matrix getMinor(int row, int col) {
+    public Matrix minor(int row, int col) {
         int dim = matrix[0].length;
         int nDim = dim - 1;
         double[][] minor = new double[nDim][nDim];
@@ -94,5 +91,28 @@ public class Matrix {
         }
 
         return new Matrix(minor);
+    }
+
+    /**
+     * Calculates the determinant of a matrix
+     *
+     * @return The determinant of the caller matrix
+     */
+    public double determinant() {
+        int dim = matrix[0].length;
+        double determinant = 0.0;
+
+        if (dim == 2) {
+            // the simplest form of a 2x2 matrix
+            determinant = matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
+        } else {
+            for (int j = 0; j < dim; j++) {
+                Matrix minor = this.minor(0, j);
+                double dtrm = minor.determinant();
+                determinant += this.getItemAtPosition(0, j) * dtrm * Math.pow(-1, j);
+            }
+        }
+
+        return determinant;
     }
 }
