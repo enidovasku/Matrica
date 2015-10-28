@@ -9,7 +9,8 @@ public class Solver
 	private double x2;
 	private double x3;
 	private String unexpectedResult;
-	
+	private String solution;
+		
 	public double getX1()
 	{
 		return this.x1;
@@ -29,6 +30,10 @@ public class Solver
 	{
 		return this.delta;
 	}
+	public String getSolution()
+	{
+		return this.solution;
+	}
 	
 	//gjeneron matricen e fazes se radhes/
 	public Matrice generateNextMatrice(Matrice inputMatrice, int phase)
@@ -39,8 +44,11 @@ public class Solver
 			if(phase == 1)
 			{				
 				if((inputMatrice.a1 == 0 && inputMatrice.b1 == 0)||(inputMatrice.a2 == 0 && inputMatrice.b2 == 0)) 
+				{	
 					this.unexpectedResult = "Ky sistem ekuacionesh nuk ka zgjidhje";
-				
+				    this.solution = this.unexpectedResult;
+				    return null;
+				}
 				if(inputMatrice.a1 == 0) this.x2 = inputMatrice.a3/inputMatrice.a2; 
 				else
 				{
@@ -102,6 +110,7 @@ public class Solver
 				  inputMatrice.printValues();
 			}
 			phase++;
+			this.solution = "Zgjidhje :"+ this.x1 + " " + this.x2;
 		}
 		
 		else
