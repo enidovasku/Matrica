@@ -48,9 +48,11 @@ public class MainFrame extends JFrame {
 				int b3 = e.getB3();
 				
 				Matrice matrice = new Matrice(a1, a2, a3, b1, b2, b3);
-				Solver solver = new Solver();
-				solver.generateNextMatrice(matrice, 1);
-				consoleLayout.appendText(solver.getSolution());				
+				Solver solver = new Solver(matrice);
+				
+				for(int phase = 0; phase<solver.getPhases(); phase++) 
+				    consoleLayout.appendText(solver.getMatriceState(phase));
+				consoleLayout.appendText("\n"+solver.getSolution());				
 			}
 		});
 		
@@ -71,8 +73,8 @@ public class MainFrame extends JFrame {
 				int c4 = e.getC4();
 				
 				Matrice matrice = new Matrice(a1, a2, a3,a4, b1, b2, b3,b4,c1,c2,c3,c4);
-				Solver solver = new Solver();
-				solver.generateNextMatrice(matrice, 1);
+				Solver solver = new Solver(matrice);
+				
 				consoleLayout.appendText(solver.getSolution());
 			}
 		});

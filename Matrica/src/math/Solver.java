@@ -10,7 +10,17 @@ public class Solver
 	private double x3;
 	private String unexpectedResult;
 	private String solution;
+	private int phases;
+	private String[] matriceState = new String[4];
 		
+	public int getPhases() {
+		return phases;
+	}
+
+	public String getMatriceState(int phase) {
+		return matriceState[phase];
+	}
+
 	public double getX1()
 	{
 		return this.x1;
@@ -35,6 +45,10 @@ public class Solver
 		return this.solution;
 	}
 	
+	public Solver(Matrice inputMatrice)
+	{
+		generateNextMatrice(inputMatrice, 1);
+	}
 	//gjeneron matricen e fazes se radhes/
 	public Matrice generateNextMatrice(Matrice inputMatrice, int phase)
 	{
@@ -66,10 +80,10 @@ public class Solver
 				  inputMatrice.b1 = inputMatrice.b1*(multiplyer);
 				  inputMatrice.b2 = inputMatrice.b2*(multiplyer);
 				  inputMatrice.b3 = inputMatrice.b3*(multiplyer);
-                  //TO BE CHANGED
+                  
 				  
-				  System.out.println(phase+" -> ");
-				  inputMatrice.printValues();
+				  this.matriceState[0] = "Faza e pare"+" -> \n"+ inputMatrice.returnValues();
+				  
 				}
 			}
 			
@@ -79,10 +93,8 @@ public class Solver
 				inputMatrice.b1 = inputMatrice.b1 - inputMatrice.a1;	
 				inputMatrice.b2 = inputMatrice.b2 - inputMatrice.a2;	
 				inputMatrice.b3 = inputMatrice.b3 - inputMatrice.a3;	
-                //TO BE CHANGED
-				  
-				  System.out.println(phase+" -> ");
-				  inputMatrice.printValues();
+                
+				this.matriceState[1] = "\nFaza e dyte"+" -> \n"+ inputMatrice.returnValues();
 			}
 			
 			else if(phase == 3)
@@ -90,10 +102,9 @@ public class Solver
 				multiplyer = 1/inputMatrice.b2;
 				inputMatrice.b2 = inputMatrice.b2*(multiplyer);	
 				inputMatrice.b3 = inputMatrice.b3*(multiplyer);	
-                //TO BE CHANGED
-				  
-				  System.out.println(phase+" -> ");
-				  inputMatrice.printValues();
+
+				this.matriceState[2] = "\nFaza e trete"+" -> \n"+ inputMatrice.returnValues();				  
+			
 			}
 			
 			else if(phase == 4)
@@ -104,13 +115,14 @@ public class Solver
 				this.x1 = inputMatrice.a3;
 				this.x2 = inputMatrice.b3;
 				this.stop = true;
-                //TO BE CHANGED
+				
+				this.matriceState[3] = "\nFaza e katert"+" -> \n"+ inputMatrice.returnValues();
 				  
-				  System.out.println(phase+" -> ");
-				  inputMatrice.printValues();
+			
 			}
 			phase++;
 			this.solution = "Zgjidhje :"+ this.x1 + " " + this.x2;
+			this.phases = phase-1;
 		}
 		
 		else
