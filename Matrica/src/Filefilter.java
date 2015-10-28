@@ -27,7 +27,7 @@ public class Filefilter extends FileFilter {
 	}
 
 	public String getDescription() {
-		return "Person database file (*.txt)";
+		return "Text File (*.txt)";
 	}
 
 }

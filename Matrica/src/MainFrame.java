@@ -21,6 +21,8 @@ public class MainFrame extends JFrame {
 	private ConsoleLayout consoleLayout;
 	private MatricaLayout matricaLayout;
 	private JFileChooser fileChooser;
+	private Layout2 layout2;
+	private Layout3 layout3;
 	
 		
 	public MainFrame(){
@@ -29,6 +31,22 @@ public class MainFrame extends JFrame {
 		chooserLayout = new ChooserLayout();
 		consoleLayout = new ConsoleLayout();
 		matricaLayout = new MatricaLayout();
+		layout2 = new Layout2();
+		layout3 = new Layout3();
+		
+		layout2.setLayoutListener(new LayoutListener() {
+			@Override
+			public void layoutEventOccurred(LayoutEvent e) {
+				int a1 = e.getA1();
+				int a2 = e.getA2();
+				int a3 = e.getA3();
+				int b1 = e.getB1();
+				int b2 = e.getB2();
+				int b3 = e.getB3();
+				
+				
+			}
+		});
 		
 		fileChooser = new JFileChooser();
 		
@@ -43,9 +61,14 @@ public class MainFrame extends JFrame {
 				{
 				case 0:
 					consoleLayout.appendText("Matrica 2x2\n");
+					layout2.setVisible(true);
+					layout3.setVisible(false);
 					break;
 				case 1:
 					consoleLayout.appendText("Matrica 3x3\n");
+					add(layout3,BorderLayout.CENTER);
+					layout2.setVisible(false);
+					layout3.setVisible(true);
 					break ;
 				default:
 					break;
@@ -60,7 +83,10 @@ public class MainFrame extends JFrame {
 		setMinimumSize(new Dimension(600,600));
 		//setSize(600,600);
 		
-		add(consoleLayout, BorderLayout.CENTER);
+		
+		add(layout2,BorderLayout.CENTER);
+		//add(matricaLayout, BorderLayout.CENTER);
+		//add(consoleLayout, BorderLayout.CENTER);
 		add(chooserLayout,BorderLayout.WEST);
 	}
 
@@ -80,6 +106,13 @@ public class MainFrame extends JFrame {
 
 		JMenu windowMenu = new JMenu("Dritare");
 		JMenu showMenu = new JMenu("Shfaq");
+		
+		JMenu help = new JMenu("Help");
+		JMenuItem about = new JMenuItem("About");
+		JMenuItem updateSoft = new JMenuItem("Update");
+		help.add(updateSoft);
+		help.addSeparator();
+		help.add(about);
 
 		JCheckBoxMenuItem showFormItem = new JCheckBoxMenuItem("Paneli i Zgjedhjes");
 		showFormItem.setSelected(true);
@@ -89,6 +122,21 @@ public class MainFrame extends JFrame {
 
 		menuBar.add(fileMenu);
 		menuBar.add(windowMenu);
+		menuBar.add(help);
+		
+		updateSoft.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				consoleLayout.appendText("Update\n");
+			}
+		});
+		
+		about.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				consoleLayout.appendText("About\n");
+			}
+		});
 
 		showFormItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {

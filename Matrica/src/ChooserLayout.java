@@ -33,9 +33,6 @@ public class ChooserLayout extends JPanel implements ActionListener{
 		add(new JLabel("Zgjidh:"));
 		add(matrica2 );
 		add(matrica3 );
-
-		
-		
 	}
 	
 	public void setChooseListener(ChooseListener chooseListener){
