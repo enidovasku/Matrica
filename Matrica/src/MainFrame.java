@@ -71,6 +71,10 @@ public class MainFrame extends JFrame {
 				int c3 = e.getC3();
 				int c4 = e.getC4();
 				
+				Matrice matrice = new Matrice(a1, a2, a3,a4, b1, b2, b3,b4,c1,c2,c3,c4);
+				Solver solver = new Solver();
+				solver.generateNextMatrice(matrice, 1);
+				System.out.println(solver.getSolution());
 			}
 		});
 		
