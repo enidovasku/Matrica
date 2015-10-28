@@ -50,8 +50,7 @@ public class MainFrame extends JFrame {
 				Matrice matrice = new Matrice(a1, a2, a3, b1, b2, b3);
 				Solver solver = new Solver();
 				solver.generateNextMatrice(matrice, 1);
-				System.out.println(solver.getSolution());
-				
+				consoleLayout.appendText(solver.getSolution());				
 			}
 		});
 		
@@ -74,7 +73,7 @@ public class MainFrame extends JFrame {
 				Matrice matrice = new Matrice(a1, a2, a3,a4, b1, b2, b3,b4,c1,c2,c3,c4);
 				Solver solver = new Solver();
 				solver.generateNextMatrice(matrice, 1);
-				System.out.println(solver.getSolution());
+				consoleLayout.appendText(solver.getSolution());
 			}
 		});
 		
@@ -114,10 +113,11 @@ public class MainFrame extends JFrame {
 		//setSize(600,600);
 		
 		
-		add(layout2,BorderLayout.CENTER);
+		add(layout2,BorderLayout.WEST);
+		
 		//add(matricaLayout, BorderLayout.CENTER);
-		//add(consoleLayout, BorderLayout.CENTER);
-		add(chooserLayout,BorderLayout.WEST);
+		add(consoleLayout, BorderLayout.CENTER);
+		//add(chooserLayout,BorderLayout.WEST);
 	}
 
 

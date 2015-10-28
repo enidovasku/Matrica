@@ -67,19 +67,19 @@ public class Layout2 extends JPanel{
 				gc.gridx = 0;
 				gc.fill = GridBagConstraints.NONE;
 				gc.anchor = GridBagConstraints.LINE_START;
-				gc.insets = new Insets(0, 0, 0, 5);
+				gc.insets = new Insets(0, 5, 0, 5);
 				add(new JLabel("X1"), gc);
 				
 				gc.gridx = 1;
 				gc.fill = GridBagConstraints.NONE;
 				gc.anchor = GridBagConstraints.LINE_START;
-				gc.insets = new Insets(0, 0, 0, 5);
+				gc.insets = new Insets(0, 5, 0, 5);
 				add(new JLabel("X2"), gc);
 				
 				gc.gridx = 2;
 				gc.fill = GridBagConstraints.NONE;
 				gc.anchor = GridBagConstraints.LINE_START;
-				gc.insets = new Insets(0, 0, 0, 5);
+				gc.insets = new Insets(0, 5, 0, 5);
 				add(new JLabel("A"), gc);
 
 				// //////////Second row ///////////////////////////////////
