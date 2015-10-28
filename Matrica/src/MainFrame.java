@@ -48,6 +48,25 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
+		layout3.setLayoutListener(new LayoutListener() {
+			@Override
+			public void layoutEventOccurred(LayoutEvent e) {
+				int a1 = e.getA1();
+				int a2 = e.getA2();
+				int a3 = e.getA3();
+				int a4 = e.getA4();
+				int b1 = e.getB1();
+				int b2 = e.getB2();
+				int b3 = e.getB3();
+				int b4 = e.getB4();
+				int c1 = e.getC1();
+				int c2 = e.getC2();
+				int c3 = e.getC3();
+				int c4 = e.getC4();
+				
+			}
+		});
+		
 		fileChooser = new JFileChooser();
 		
 		fileChooser.addChoosableFileFilter(new Filefilter());

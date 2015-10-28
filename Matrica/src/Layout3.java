@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ public class Layout3 extends JPanel{
 	private JTextField a1 , a2 ,a3 ,a4 ,b1 ,b2 ,b3,b4, c1,c2,c3,c4;
 	private static final int SIZE = 5;
 	private JButton calcBtn , resetBtn;
+	private LayoutListener layoutListener;
 	
 	public Layout3(){
 		a1= new JTextField(SIZE);
@@ -33,6 +36,33 @@ public class Layout3 extends JPanel{
 		
 		calcBtn = new JButton("Llogarit");
 		resetBtn = new JButton("Fshij");
+		
+		calcBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int a11 =Integer.parseInt(a1.getText());
+				int a12 =Integer.parseInt(a2.getText());
+				int a13 =Integer.parseInt(a3.getText());
+				int a14 =Integer.parseInt(a4.getText());
+				
+				int b11 =Integer.parseInt(b1.getText());
+				int b12 =Integer.parseInt(b2.getText());
+				int b13 =Integer.parseInt(b3.getText());
+				int b14 =Integer.parseInt(b4.getText());
+				
+				int c11 =Integer.parseInt(c1.getText());
+				int c12 =Integer.parseInt(b2.getText());
+				int c13 =Integer.parseInt(c3.getText());
+				int c14 =Integer.parseInt(c4.getText());
+				
+				LayoutEvent lv = new LayoutEvent(this, a11,a12,a13,a14,b11,b12,b13,b14,c11,c12,c13,c14);
+
+				if (layoutListener != null) {
+					layoutListener.layoutEventOccurred(lv);
+				}
+			}
+		});
+		
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -165,5 +195,9 @@ public class Layout3 extends JPanel{
 				gc.anchor = GridBagConstraints.FIRST_LINE_START;
 				add(calcBtn, gc);
 				
+	}
+	
+	public void setLayoutListener(LayoutListener listener) {
+		this.layoutListener = listener;
 	}
 }
