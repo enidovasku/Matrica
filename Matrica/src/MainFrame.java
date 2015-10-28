@@ -14,6 +14,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import math.Matrice;
+import math.Solver;
+
 
 public class MainFrame extends JFrame {
 	
@@ -44,6 +47,10 @@ public class MainFrame extends JFrame {
 				int b2 = e.getB2();
 				int b3 = e.getB3();
 				
+				Matrice matrice = new Matrice(a1, a2, a3, b1, b2, b3);
+				Solver solver = new Solver();
+				solver.generateNextMatrice(matrice, 1);
+				System.out.println(solver.getSolution());
 				
 			}
 		});
